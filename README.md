@@ -58,6 +58,43 @@ The final dataset was split into **training and testing sets (80/20 split)** usi
    Optimize the model parameters to further improve performance.  
 
 ---
+## Model Training & Evaluation
+After splitting the data into training and test sets, we trained several classification models:
+- **Models**: Support Vector Machines (SVM), Decision Trees, Random Forest, K-Nearest Neighbors (KNN), Gradient Boosting.  
+- **Evaluation Metrics**:  
+  - Training/Test Accuracy  
+  - Confusion Matrices  
+  - Classification Reports (Precision, Recall, F1-Score)  
 
-## Conclusion  
-This project demonstrates a systematic approach to data preprocessing and feature engineering for predicting room occupancy based on environmental sensor data. The process includes encoding categorical variables, selecting features based on Random Forest importance, scaling, and splitting the data. These steps form a robust foundation for building and evaluating classification models.  
+This step ensures the model generalizes well to unseen data while avoiding overfitting.
+
+---
+
+## Hyperparameter Tuning
+To optimize performance, we tuned hyperparameters using **GridSearchCV**. Key parameters adjusted for tree-based models (Decision Tree, Random Forest, Gradient Boosting):  
+
+| Parameter           | Purpose                                                                 |
+|---------------------|-------------------------------------------------------------------------|
+| `max_depth`         | Limits tree depth to prevent overfitting.                              |
+| `min_samples_split` | Minimum samples required to split a node.                              |
+| `min_samples_leaf`  | Ensures leaves have sufficient samples.                                |
+| `max_features`      | Controls features considered per split.                                |
+| `learning_rate`     | Reduces step size in Gradient Boosting for stable learning.            |
+
+---
+
+## Saving & Using the Final Model
+The best-performing pipeline (preprocessing + model) was saved using `joblib` for future predictions
+## Conclusions & Next Steps
+
+### Key Outcomes
+- **Built an end-to-end pipeline** for occupancy prediction using sensor data.  
+- **Achieved robust performance** through preprocessing, feature engineering, and hyperparameter tuning.  
+
+### Next Steps
+1. **Explore Advanced Models**: Test ensemble methods (e.g., stacking, XGBoost).  
+2. **Fine-Tuning**: Optimize hyperparameters further with expanded grids.  
+3. **Deployment**: Convert the pipeline into an API for real-time predictions.  
+4. **Evaluation**: Track precision/recall trade-offs for specific use cases.  
+
+This project demonstrates a systematic approach to building and deploying machine learning models for real-world sensor data analysis.
